@@ -1,17 +1,21 @@
 package eif.viko.lt.recipe.Adapters
 
 import android.annotation.SuppressLint
-import androidx.recyclerview.widget.RecyclerView
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.view.View.OnClickListener
+import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import eif.viko.lt.recipe.Models.Recipe
 import eif.viko.lt.recipe.R
 import kotlinx.android.synthetic.main.recipe_item.view.*
+import java.io.File
+
 
 class RecipeListAdapter(private val interaction: Interaction? = null) :
     ListAdapter<Recipe, RecipeListAdapter.RecipeViewHolder>(RecipeDC()) {
@@ -47,8 +51,11 @@ class RecipeListAdapter(private val interaction: Interaction? = null) :
         fun bind(item: Recipe) = with(itemView) {
             // TODO: Bind the data with View
             title_recipe.text = item.name
-            details_recipe.text=item.details
+            //details_recipe.text=item.details
             Picasso.get().load(item.imageUrl).into(image_recipe);
+
+            //val bmImg = BitmapFactory.decodeFile(item.imageUrl)
+            //image_recipe.setImageBitmap(bmImg)
         }
     }
 
